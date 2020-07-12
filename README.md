@@ -26,9 +26,14 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false,  foreign_key: true|
-|mailaddless|integer|null: false, foreign_key: true|
+|name|string|null: false|
+|mailaddless|integer|null: false|
 |passward|integer|null: false, foreign_key: true|
+
+### Association
+has_many :post
+has_many :groups_user
+belongs_to :groups_user
 
 ## groups_userテーブル
 
@@ -45,4 +50,11 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|message|text|null: false, foreign_key: true|
+|message|text|null: false|
+|image|text|
+|users_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
+
+### Association
+has_many :users
+has_many :groups
