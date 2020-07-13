@@ -28,12 +28,12 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |mailaddless|integer|null: false|
-|passward|integer|null: false, foreign_key: true|
+|password|integer|null: false|
 
 ### Association
-has_many :post
-has_many :groups_user
-belongs_to :groups_user
+has_many :posts
+has_many :groups_users
+has_many :groups, through: : groups_users
 
 ## groups_userテーブル
 
@@ -45,16 +45,24 @@ belongs_to :groups_user
 ### Association
 - belongs_to :group
 - belongs_to :user
+- has_many :users, through: : groups_users
 
 ## postテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|message|text|null: false|
+|message|text|
 |image|text|
 |users_id|integer|null: false, foreign_key: true|
 |groups_id|integer|null: false, foreign_key: true|
 
 ### Association
-has_many :users
-has_many :groups
+belongs_to :user
+belongs_to :group
+
+## groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
