@@ -27,7 +27,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|mailaddless|integer|null: false|
+|mailaddress|integer|null: false|
 |password|integer|null: false|
 
 ### Association
@@ -68,6 +68,6 @@ belongs_to :group
 
 
 ### Association
-has_many :users, through :groups_user
+has_many :users, through: :groups_users
 has_many :groups_users
 has_many :posts
