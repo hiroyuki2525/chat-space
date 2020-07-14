@@ -33,7 +33,7 @@ Things you may want to cover:
 ### Association
 has_many :posts
 has_many :groups_users
-has_many :groups, through: : groups_users
+has_many :groups, through: :groups_users
 
 ## groups_userテーブル
 
@@ -41,6 +41,10 @@ has_many :groups, through: : groups_users
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+### Association
+has_many :users
+has_many :groups
 
 
 ## postテーブル
@@ -53,8 +57,8 @@ has_many :groups, through: : groups_users
 |groups_id|integer|null: false, foreign_key: true|
 
 ### Association
-has_many :user, through: :groups_user
-has_many :group, through: :groups_user
+belongs_to :user
+belongs_to :group
 
 ## groupsテーブル
 
@@ -62,3 +66,8 @@ has_many :group, through: :groups_user
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+### Association
+has_many :users, through :groups_user
+has_many :users
+has_many :posts
