@@ -43,8 +43,8 @@ has_many :groups, through: :groups_users
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-belongs_to :users
-belongs_to :groups
+belongs_to :user
+belongs_to :group
 
 
 ## postテーブル
@@ -64,9 +64,10 @@ belongs_to :group
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false, foreign_key: true|
+|name|string|null: false|
 
 
 ### Association
 has_many :users, through :groups_user
 has_many :groups_users
+has_many :posts
