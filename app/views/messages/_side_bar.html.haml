@@ -2,13 +2,13 @@
   .Side-box__user-name
     .Side-box__top-items
       %p.Side-box__top-items__name
-        hiroyuki
+        = current_user.name
       %ul.Side-box__top-items__icons
         %li.Side-box__top-items__icons--fa
           = link_to "#" do
             = icon('far', 'edit')
         %li.Side-box__top-items__icons--edit
-          = link_to "#" do
+          = link_to edit_user_path(current_user) do
             = icon('fas', 'cog')
   .Side-box__group-lists
     .Side-box__group-list
