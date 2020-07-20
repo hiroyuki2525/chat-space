@@ -11,10 +11,9 @@
           = link_to edit_user_path(current_user) do
             = icon('fas', 'cog')
   .Side-box__group-lists
-    - current_user.groups.each do |group|
-      .Side-box__group-list
-        = link_to "#" do
-          .Side-box__group-list__group-name
-            hiroyuki
-          .Side-box__group-list__group-message
-            まだメッセージがありません。
+    .Side-box__group-list
+      = link_to "#" do
+        .Side-box__group-list__group-name
+          hiroyuki
+        .Side-box__group-list__group-message
+          まだメッセージがありません。
