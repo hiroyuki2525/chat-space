@@ -5,7 +5,7 @@
         = current_user.name
       %ul.Side-box__top-items__icons
         %li.Side-box__top-items__icons--fa
-          = link_to "#" do
+          = link_to new_group_path do
             = icon('far', 'edit')
         %li.Side-box__top-items__icons--edit
           = link_to edit_user_path(current_user) do
@@ -13,8 +13,8 @@
   .Side-box__group-lists
     - current_user.groups.each do |group|
       .Side-box__group-list
-        = link_to "#" do
+        = link_to group_messages_path(group) do
           .Side-box__group-list__group-name
-            hiroyuki
+            = group.name
           .Side-box__group-list__group-message
-            まだメッセージがありません。
+            = group.show_last_message

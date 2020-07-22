@@ -2,29 +2,27 @@
   .Chat-box__groups-info
     .Chat-box__groups-info__left
       .Chat-box__groups-info__left__title
-        hiroyuki
+        = @group.name
       %ul.Chat-box__groups-info__left__members
         Menber :
+        - @group.users.each do |user|
+          = user.name
         %li.Chat-box__groups-info__left__member
         hiroyuki
    
-    = link_to 'Edit' , "#" , class: 'Edit' 
+    = link_to 'Edit' , edit_group_path(@group.id) , class: 'Edit' 
         
-        
-  .Chat-box__messages
-    .Chat-box__message-list
-      .Chat-box__message-list__upper-message
-        .Chat-box__message-list__upper-message__user-name
-          hiroyuki
-        .Chat-box__message-list__upper-message__date
-          2020/07/17
-      .Chat-box__messagelist__lower-message
-        howdy?
+  .MessageField
+    = render @messages
+
   
   .Chat-box__message-form
-    .Chat-box__message-form__input-box
-      %input{ type:"text", class: "input-box__text", placeholder: "type a message"}
-      %label{ class: "input-box__image"}
-        = icon('fas', 'image')
-        %input{ type:"file",class:"input-box__image__file"}
-    %input{ type:"submit",class:"submit-btn" , placeholder: "SEND"}
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+      .Chat-box__message-form__input-box
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__text' do
+          = icon('far', 'image', class: 'Form__icon')
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit 'Send', class: 'submit-btn'
+
+  
