@@ -108,7 +108,7 @@ a{
       margin-bottom: 46px;
     }
   }
-  &__message-form{
+  .Chat-box__message-form{
     height: 90px;
     background-color: #d2d2d2;
     padding-left: 20px;
@@ -116,6 +116,9 @@ a{
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    .Form{
+      display: flex;
+    }
     &__input-box{
       position: relative;
       
@@ -130,20 +133,18 @@ a{
       }
 
 
-    .input-box__image{
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      .input-box__image__file{
-        display: none;
-        
-        
+      &__image{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        &__file{
+          display: none;
       }
     }
     }
-      
   }
-}
+  }
+
 
 .submit-btn{
   background-color: #38AEF0;
