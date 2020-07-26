@@ -16,13 +16,13 @@
     = render @messages
 
   
-  .Chat-box__message-form
-    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
-      .Chat-box__message-form__input-box
-        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
-        = f.label :image, class: 'input-box__text' do
-          = icon('far', 'image', class: 'Form__icon')
-          = f.file_field :image, class: 'input-box__image__file'
+  .Chat-box__message
+    = form_with model: [@group, @message], html: {class: "Chat-box__message__form"}, local: true do |f|
+      .Chat-box__message__form__input-box
+        = f.text_field :content, class: 'Chat-box__message__form__input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'Chat-box__message__form__input-box__image' do
+          = icon('far', 'image')
+          = f.file_field :image, class: 'Chat-box__message__form__input-box__image--file'
       = f.submit 'Send', class: 'submit-btn'
 
   
