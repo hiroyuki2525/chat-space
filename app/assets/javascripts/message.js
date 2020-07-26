@@ -54,8 +54,8 @@ $(function(){
     })
     .done(function(data){
       let html = buildHTML(data);
-      $('.MessageField').append(html);
-      $('.MessageField').animate({ scrollTop: $('.MessageField')[0].scrollHeight});    
+      $('.Chat-box__messages').append(html);
+      $('.Chat-box__messages').animate({ scrollTop: $('.Chat-box__messages')[0].scrollHeight});    
       $('form')[0].reset();
       $("#submit-btn").prop("disabled", true);
     })
