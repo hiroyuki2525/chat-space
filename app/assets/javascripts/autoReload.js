@@ -2,16 +2,16 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       let html =
-        `<div class="MessageBox" data-message-id=${message.id}>
-          <div class="MessageInfo">
-            <div class="MessageInfo__userName">
+        `<div class="Chat-box__message-list" data-message-id=${message.id}>
+          <div class="Chat-box__message-list__upper-message">
+            <div class="Chat-box__message-list__upper-message__user-name">
               ${message.user_name}
             </div>
-            <div class="MessageInfo__date">
+            <div class="Chat-box__message-list__upper-message__date">
               ${message.created_at}
             </div>
           </div>
-          <div class="Message">
+          <div class="Chat-box__messagelist__lower-message">
             <p class="Message__content">
               ${message.content}
             </p>
@@ -42,7 +42,7 @@ $(function(){
 
   let reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-    let last_message_id = $('.MessageBox:last').data("message-id") || 0;
+    let last_message_id = $('.Chat-box__message-list:last').data("message-id") || 0;
     $.ajax({
       //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
       url: "api/messages",
@@ -62,8 +62,8 @@ $(function(){
           insertHTML += buildHTML(message)
         });
         //メッセージが入ったHTMLに、入れ物ごと追加
-        $('.MessageField').append(insertHTML);
-        $('.MessageField').animate({ scrollTop: $('.MessageField')[0].scrollHeight});
+        $('.Chat-box__messages').append(insertHTML);
+        $('.Chat-box__messages').animate({ scrollTop: $('.Chat-box__messages')[0].scrollHeight});
       }
     })
     .fail(function() {
