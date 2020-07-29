@@ -3,16 +3,16 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       let html =
-        `<div class="MessageBox" data-message-id=${message.id}>
-          <div class="MessageInfo">
-            <div class="MessageInfo__userName">
+        `<div class="Chat-box__message-list" data-message-id=${message.id}>
+          <div class="Chat-box__message-list__upper-message">
+            <div class="Chat-box__message-list__upper-message__user-name">
               ${message.user_name}
             </div>
-            <div class="MessageInfo__date">
+            <div class="Chat-box__message-list__upper-message__date">
               ${message.created_at}
             </div>
           </div>
-          <div class="Message">
+          <div class="Chat-box__messagelist__lower-message">
             <p class="Message__content">
               ${message.content}
             </p>
